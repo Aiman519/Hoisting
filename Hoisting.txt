@@ -1,0 +1,7 @@
+Hoisting-> in javascript is it all about the  declaration of all the variables and function to the top of scope(Globalor function) before the code run.
+->hoist only declaration(HOD) not initialization
+->by HOD we can use before iniialization but there are some differences in some variable
+
+
+Temporal dead zone(TED) -> cannot access variables before initalization like let and const after hoisting they have been declare to the top of scope  not initialiazed 
+-> from starting scope to variable delaraction is TDZ
