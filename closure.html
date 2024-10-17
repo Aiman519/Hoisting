@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Closures
+
+    </title>
+</head>
+
+<body>
+    <button id="Orange">Orange</button>
+    <button id="Blue">Blue</button>
+    <button id="counter" onclick="myfunction()">Counter</button>
+    <p id="demo">0</p>
+</body>
+<script>
+
+    //  document.getElementById('Orange').onclick = handlechanger("orange"); // Incorrect: The function runs immediately, not on click, so the   background changes to orange  without clicking.  
+
+    //  function handlechanger(color){
+    //             document.body.style.backgroundColor =   `${color}`;  
+    //     }
+
+
+    //First Approach
+    document.getElementById('Orange').onclick = handlechanger("orange")  // Invoked immediately , assigned hello funtion referance to onclick event handler
+
+
+    //Second Approach
+    document.getElementById('Blue').onclick = () => { handlechanger("Blue")() } // Arrow function 
+   
+    function handlechanger(color) {
+        return function () {
+            document.body.style.backgroundColor = `${color}`;
+        }
+
+    }
+    // This code demonstrates a closure . explore closurebasics file for closure concept
+
+
+
+
+//<---------Counter button code -------->
+
+
+    let add = (function () {  
+    // Self-invoking function (IIFE) that returns the 'plus' function and assigns it to 'add'.
+    // When you call the 'add' function, you are actually calling the 'plus' function returned by the IIFE.
+    
+    let counter = 0;   // Initialize 'counter' once, using closure to preserve its value.
+
+    return function plus() {  
+        // Increment the 'counter' each time 'plus' is called and return the updated value.
+        return counter += 1;
+    }
+
+})();  // IIFE executed immediately and stores the 'plus' function in 'add'
+
+
+
+
+    function myfunction() {
+        document.getElementById('demo').innerHTML = add();
+    }
+
+</script>
+
+</html>

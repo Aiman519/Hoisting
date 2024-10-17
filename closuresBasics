@@ -1,0 +1,20 @@
+
+//closure-> returning a function within another  function , or that one returning  function retain access to its lexicalscope(scope in which the function is defined) variables or logic even after the parent function finished executing
+
+function outerFunction()
+{
+    let name = " Aiman shahid " ;
+
+    function innerFunction(){
+        console.log(name);
+    }
+    return innerFunction;
+}
+
+
+let callFunction = outerFunction(); // outerFunction execution finishes, but it returns innerFunction
+callFunction(); // calls innerFunction, which still accesses the name variable  because of closure  even after outerFunction has finished
+
+
+
+
